@@ -15,13 +15,21 @@
 
 # Analysis of 10 Mutants of the Range class 
 
-## getLength
+## getLength()
 
 **Mutation** 
 Replaced double subtraction with addition -> KILLED
 
 **Analysis**  
 We replaced "return this.upper - this.lower" subraction operator with addition. This killed our tests for this class since all the expected values changed due to the change of the operator.
+
+## getCentralValue()
+
+**Mutation** 
+Replaced double addition with division -> Killed
+
+**Analysis**  
+In the line "return this.lower / 2.0 + this.upper / 2.0;" we replaced with double addition with another division. This killed our tests because the expected values changed due to the change of the operators used in the return statement.
 
 # Report all the statistics and the mutation score for each test class
 
