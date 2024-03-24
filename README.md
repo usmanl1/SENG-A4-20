@@ -46,3 +46,5 @@ Transitioning to mutation testing, we delved into examining and running the Data
 Our team encountered significant challenges while grappling with PiTest during the lab. The absence of documentation in the lab document made it difficult to divide and execute tests for each class effectively. Initially, we faced numerous hurdles running PiTest, prompting us to shift our focus to the Selenium section. A key obstacle was the inability to run the test class if any tests failed, necessitating resolution of these issues before proceeding with mutation coverage. Additionally, varying run times of PiTest on different machines posed a challenge. Another hurdle emerged with Selenium, particularly after the test was recored and rerun it did not work properly.
 
 # Comments/feedback on the assignment itself
+
+The lab proved to be engaging and beneficial for gaining insights into mutations and GUI testing. Nonetheless, our group encountered challenges in configuring our environment for mutation testing. Clear and detailed instructions regarding the setup of external libraries and file structures would have been invaluable in expediting our testing process.
