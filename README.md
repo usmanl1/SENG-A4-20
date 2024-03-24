@@ -17,11 +17,9 @@
 
 **1. getLength**
 
-**Mutation 
-Replaced double subtraction with addition -> KILLED**
+**Mutation  Replaced double subtraction with addition -> KILLED**
 
-**Analysis**
-We replaced "return this.upper - this.lower" subraction operator with addition. This killed our tests for this class since all the expected values changed due to the change of the operator.
+**Analysis**  We replaced "return this.upper - this.lower" subraction operator with addition. This killed our tests for this class since all the expected values changed due to the change of the operator.
 
 # Report all the statistics and the mutation score for each test class
 
