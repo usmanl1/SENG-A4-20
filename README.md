@@ -15,10 +15,10 @@
 
 # Analysis of 10 Mutants of the Range class 
 
-**1. getLength**
+## getLength
 
-**Mutation  
-Replaced double subtraction with addition -> KILLED**
+**Mutation** 
+Replaced double subtraction with addition -> KILLED
 
 **Analysis**  
 We replaced "return this.upper - this.lower" subraction operator with addition. This killed our tests for this class since all the expected values changed due to the change of the operator.
