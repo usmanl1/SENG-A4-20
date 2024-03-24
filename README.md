@@ -15,6 +15,9 @@
 
 # Analysis of 10 Mutants of the Range class 
 
+1. getLength()
+  Mutation: Replaced double subtraction with addition -> KILLED
+
 # Report all the statistics and the mutation score for each test class
 
 # Analysis drawn on the effectiveness of each of the test classes
