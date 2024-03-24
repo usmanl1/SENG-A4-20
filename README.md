@@ -25,6 +25,8 @@
 
 # Explain your SELENUIM test case design process
 
+In the process of creating our Selenium test suite, we began by thoroughly exploring the website to get a good understanding of its diverse functionalities and features which can be used for testing. We documented these functions, actions like system login, add product to card, search local nearest store, product searches for both existing and non-existing items, among others. Subsequently, we systematically executed each function with varied test inputs if it was possible for the specific test. Once we had a deep familiarity of the website's operations, we methodically made the test scenarios into Selenium scripts one by one. Our efforts culminated in the creation of 14 distinct test cases aimed at scrutinizing the system major functionality. These cases ranged from comprehensive tests like valid and invalid username logins to standalone assessments such as validating gift card codes.
+
 # Explain the use of assertions and checkpoints
 
 # how did you test each functionaity with different test data
