@@ -29,6 +29,8 @@ In the process of creating our Selenium test suite, we began by thoroughly explo
 
 # Explain the use of assertions and checkpoints
 
+Assertions and checkpoints play a crucial role in Selenium testing by verifying that the system functions as intended. These validation mechanisms are seamlessly integrated into Selenium, simplifying their implementation. Following user interactions like clicks, scrolls, or text inputs, Selenium automatically executes these validations. During test execution, if an unexpected or incorrect input is detected, the test case halts and flags the failure at that specific checkpoint.
+
 # how did you test each functionaity with different test data
 
 # How the team work/effort was divided and managed
