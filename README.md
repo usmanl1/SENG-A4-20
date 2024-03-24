@@ -33,8 +33,16 @@ Assertions and checkpoints play a crucial role in Selenium testing by verifying 
 
 # how did you test each functionaity with different test data
 
+To thoroughly assess the functionality of each test, we opted to increase the number of tests we developed. For instance, when evaluating the Login feature on the Home Depot website, we diversified our test data. For this feature, we tested a valid login information that was generated to confirm correct functionality. Conversely, we also tested login information which was not registered as a invalid input, resulting in a distinct output. By incorporating diverse test data into each function test, we were able to observe varied outputs and enhance the robustness of our testing approach.
+
 # How the team work/effort was divided and managed
 
+Our team initiated our Selenium testing by individually exploring the Home Depot website to identify two specific functionalities for testing. Some tests required a sequence of actions, like logging in, selecting and adding an item to the cart, proceeding to checkout, and then logging out. Once we defined our test cases, we utilized Usman's computer to compile a test suite and document each test case. Subsequently, the test creator observed the execution of their respective test to confirm its expected performance. After completing all test cases and their executions, we ran the entire test suite to evaluate its overall performance.
+
+Transitioning to mutation testing, we delved into examining and running the DataUtilities and Range test classes using PiTest. Upon grasping the software's operation, we paired up to investigate mutations and enhance mutation coverage scores. Robby and Jubayer, as well as Ehsan and Gopal, and Usman collaborated using pair programming to develop mutation tests. One member wrote the tests while the other provided assistance in formulating the necessary logic for testing, with roles alternating between pairs. Following the completion of all mutations, we conducted tests to check for a 10% improvement in mutation coverage for Range and achieving a 99% coverage for DataUtilities.
+
 # Difficulties encountered, challenges overcome, and lessons learned
+
+Our team encountered significant challenges while grappling with PiTest during the lab. The absence of documentation in the lab document made it difficult to divide and execute tests for each class effectively. Initially, we faced numerous hurdles running PiTest, prompting us to shift our focus to the Selenium section. A key obstacle was the inability to run the test class if any tests failed, necessitating resolution of these issues before proceeding with mutation coverage. Additionally, varying run times of PiTest on different machines posed a challenge. Another hurdle emerged with Selenium, particularly after the test was recored and rerun it did not work properly.
 
 # Comments/feedback on the assignment itself
