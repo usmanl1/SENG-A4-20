@@ -105,14 +105,14 @@ The removal of the call to range.shift() in the line "return shift(base, delta, 
 ![Alt text](/Images/Range_Before_Mutations_Tests.png)
 
 
-![Alt text](/Images/Range_Before_Breakdown.png)
+![Alt text](/Images/Range_Before_Breakdown_Statistics.png)
 
 
 ## Range after mutation tests added
 ![Alt text](/Images/Range_After_Mutations_Tests.png)
 
 
-![Alt text](/Images/Range_After_Breakdown.png)
+![Alt text](/Images/Range_After_Breakdown_Statistics.png)
 
 
 
