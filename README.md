@@ -223,6 +223,10 @@ Overall, the effectiveness of each of the test we added varied quite a bit. The 
 
 # A discussion of what could have been done to improve the mutation score of the test suites
 
+To enhance our mutation testing strategy for the Range class, we should prioritize addressing the survived mutations involving decremental or incremental scenarios. Developing targeted test cases to cover these scenarios comprehensively would help identify and eliminate these mutations. Additionally, we should consider creating more tests specifically aimed at handling conditional operator mutations. By incorporating test cases that thoroughly exercise conditional logic, we can improve our ability to detect and eliminate mutations related to these operators.  
+
+Regarding our DataUtilities test suite, although our mutation coverage was already high, we could further strengthen it by adding test cases that cover boundary conditions and conditional operators. While it may be time-consuming to identify and address specific mutations, investing effort in refining our test suite can yield valuable insights into potential bugss our methods. 
+
 # Why do we need mutation testing? Advantages and disadvantages of mutation testing
 
 # Explain your SELENUIM test case design process
