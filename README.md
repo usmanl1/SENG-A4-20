@@ -47,13 +47,6 @@ negated conditional -> Killed
 **Analysis**  
 In the line "return (b1 > this.lower);", we negated the conditional statement. This change occurred within the intersects(double b0, double b1) method, which verifies if both b0 and b1 fall within the range specified by the object. By negating the conditional, we altered the logic determining whether the provided values intersect with the range. Consequently, the expected boolean values differed from the actual results, leading to test failures.
 
-## combine(Range range1, Range range2)
-
-**Mutation** 
-Removed call to Math.min -> Killed
-
-**Analysis**  
-We removed the line "double l = Math.min(range1.getLowerBound(), range2.getLowerBound());", which was essential for combining two range objects by selecting the lowest value from each. As a result, our tests lost their expected behavior regarding the lower bounds of the combined range object, leading to test failures.
 
 ## combine(Range range1, Range range2)
 
@@ -79,21 +72,29 @@ negated conditional -> SURVIVED
 **Analysis**  
 We mutated the line "if (b0 <= this.lower)" by negating the conditional to "if (!(b0 <= this.lower))". This alteration aims to invert the logic, checking if the value of b0 is not less than or equal to the lower bound of the range. The test survived because the negated conditional still ensures correct behavior in handling cases where b0 exceeds the lower bound of the range.
 
-## intersects(double b0, double b1)
-
-**Mutation** 
-negated conditional -> SURVIVED
-
-**Analysis**  
-We mutated the line "if (b0 <= this.lower)" by negating the conditional to "if (!(b0 <= this.lower))". This alteration aims to invert the logic, checking if the value of b0 is not less than or equal to the lower bound of the range. The test survived because the negated conditional still ensures correct behavior in handling cases where b0 exceeds the lower bound of the range.
-
 ## expandToInclude(range range, double value)
 
 **Mutation** 
 Removed conditional-replaced comparison check with false -> KILLED
 
 **Analysis**  
-We mutated the line "if (value < range.getLowerBound())" by replacing the comparison check with false. This change effectively bypasses the conditional logic and alters the function's behavior. Specifically, regardless of the value's relationship with the lower bound of the range, the function will always return a new range with the upper bound set to the specified value. This mutation introduces a significant deviation from the intended functionality, potentially resulting in incorrect outputs when expanding the range to include the specified value. Consequently, it is expected to cause failures in tests that rely on this method for expanding ranges accurately.
+We mutated the line "if (value < range.getLowerBound())" by replacing the comparison check with false. This change effectively bypasses the conditional logic and alters the function's behavior. Specifically, regardless of the value's relationship with the lower bound of the range, the function will always return a new range with the upper bound set to the specified value. This mutation introduces a significant deviation from the intended functionality, potentially resulting in incorrect outputs when expanding the range to include the specified value. This is cause of our failures on our tests.
+
+## Range expand(Range range, double lowerMargin, double upperMargin)
+
+**Mutation** 
+Removed call to range.getUpperBound() -> Killed
+
+**Analysis**  
+By removing the call to range.getUpperBound() in the line "double upper = range.getUpperBound() + length * upperMargin;", the calculation of the upper bound for the expanded range solely relies on the length of the range and the upper margin. This change may result in incorrect expansions of the range, as the upper bound is no longer influenced by the original upper bound of the input range. This is the cause of our test failures.
+
+## Range shift(Range base, double delta)
+
+**Mutation** 
+Removed call to range.shift -> Killed
+
+**Analysis**  
+The removal of the call to range.shift() in the line "return shift(base, delta, false);" resulted in the failure of our tests. This call is essential for shifting the base range by the specified amount, and removing it prevents the correct execution of the shift operation. As a consequence, the absence of this call disrupts the expected behavior of the method, leading to test failures.
 
 
 # Report all the statistics and the mutation score for each test class
