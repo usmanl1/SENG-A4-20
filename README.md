@@ -99,6 +99,12 @@ The removal of the call to range.shift() in the line "return shift(base, delta, 
 
 # Report all the statistics and the mutation score for each test class
 
+## Range
+
+## Range before mutation tests Added
+![Alt text](/Image/Range_Before_Mutation_Tests.jpg)
+
+
 # Analysis drawn on the effectiveness of each of the test classes
 
 # A discussion on the effect of equivalent mutants on mutation score accuracy
