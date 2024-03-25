@@ -114,28 +114,108 @@ The removal of the call to range.shift() in the line "return shift(base, delta, 
 
 ![Alt text](/Images/Range_After_Breakdown_Statistics.png)
 
+## DataUtilities
 
 
 # Analysis drawn on the effectiveness of each of the test classes
 
 ## Range  
-Range class was able to improve from 56% mutation coverage to 66% mutation coverage. This mostly done by adding new tests code into our RangeTest.java file. Here are some of the tests we added.
+The Range class has significantly improved from 56% to 66% mutation coverage, primarily due to the addition of new test cases in our RangeTest.java file. Below is an example of one of the added tests:
 
 ```
-@Test
-public void intersectBoundry_MutationTest() {	
-    Range range1 = new Range(0, 10);
-    Range range2 = new Range(-20,-10);
+		@Test
+		public void intersectBoundry_MutationTest() {	
+			Range range1 = new Range(0, 10);
+			Range range2 = new Range(-20,-10);
 
-    assertTrue(range1.intersects(5, 5));
-    assertFalse(range1.intersects(10, 10));
-    assertFalse(range1.intersects(100, 10));	
-    assertTrue(range2.intersects(-15, -15));
-    assertFalse(range2.intersects(-20,-20));
-    assertFalse(range2.intersects(-10, -10));
-}
-...
-Hello
+			assertTrue(range1.intersects(5, 5));
+			assertFalse(range1.intersects(10, 10));
+			assertFalse(range1.intersects(100, 10));	
+			assertTrue(range2.intersects(-15, -15));
+			assertFalse(range2.intersects(-20,-20));
+			assertFalse(range2.intersects(-10, -10));
+
+		}
+```
+This test, focusing on the intersect method within the Range class, has substantially enhanced our mutation coverage. It  handles a variety of conditions and boundary cases, bolstering the robustness of our test suite. By delving into scenarios previously overlooked, such as those involving "<=", ">=", and others, it significantly boosts our mutation coverage.  
+
+```
+	@Test
+	public void shiftBoundry_MutationTest() {
+		Range range1 = new Range(0, 0);
+		Range range2  = new Range(0, 0);
+		Range range3  = new Range(10,20);
+
+		Range resultRange1 = Range.shift(range1, 5);
+		Range expectedRange1 = new Range(5, 5);
+		Range resultRange2 = Range.shift(range2, -5);
+		Range expectedRange2 = new Range(-5, -5);
+		Range resultRange3 = Range.shift(range3, 5);
+		Range expectedRange3 = new Range(15, 25);
+
+		assertEquals(resultRange1, expectedRange1);
+		assertEquals(resultRange2, expectedRange2);
+		assertEquals(resultRange3, expectedRange3);
+
+	}
+```
+
+This test suite serves to improve our testing  for the shift method in the Range class. By  addressing diverse checks and conditions pertinent to the shift method, we've significantly augmented our test coverage. This  approach has led us to explore scenarios that were previously overlooked, enabling us to attain a higher mutation coverage. By thoroughly examining all branches of the shift method, we're effectively covering a broader spectrum of mutations, thus, improving our test suite.
+
+```
+    @Test
+    public void containIncrementals_MutationTest() {
+        double originalLower = 0.0;
+        double originalUpper = 10.0;
+        
+        double incrementedValue = originalUpper + 1.0; 
+        double decrementedValue = originalLower - 1.0; 
+        double boundaryValueLower = originalLower; 
+        double boundaryValueUpper = originalUpper; 
+        double withinRangeValue = (originalLower + originalUpper) / 2.0; 
+        
+        Range range = new Range(originalLower, originalUpper);
+        
+        boolean result1 = range.contains(incrementedValue); 
+        boolean result2 = range.contains(decrementedValue); 
+        boolean result3 = range.contains(boundaryValueLower); 
+        boolean result4 = range.contains(boundaryValueUpper); 
+        boolean result5 = range.contains(withinRangeValue); 
+        
+        assertFalse(result1);
+        assertFalse(result2);
+        assertTrue(result3);
+        assertTrue(result4);
+        assertTrue(result5);
+    }
+```
+
+The prevalence of mutations involving incremental or decremental local variables across nearly every method in the Range class posed significant challenges in our efforts to boost mutation coverage. While the provided test case has contributed to a slight enhancement in coverage for the contain() method, we encountered difficulties in replicating this approach across other methods. Despite our best efforts, we faced hurdles in ensuring that all JUnit tests pass while effectively examining incremental and decremental scenarios with Pitest. 
+
+
+```
+	 @Test
+	 public void Intersects_MissingBounds_MutationTest() {
+	     Range exampleRange = new Range(-1, 1);
+	     Range mutatedRange = new Range(0, 0);
+	     
+	     assertTrue(exampleRange.intersects(mutatedRange));
+	 }
+	 
+	 @Test
+	 public void Intersects_ModifiedIntersectionCheck_MutationTest() {
+	     Range exampleRange = new Range(-1, 1);
+	     Range mutatedRange = new Range(0, 2); 
+	     
+	     assertTrue(exampleRange.intersects(mutatedRange));
+	 }
+```
+The following code above helped us expand our mutation coverage for intersection in the range method. It was a simple test that just allowed us to check for scenarios involving mutations we had previously overlooked.  
+
+
+Overall, the effectiveness of each of the test we added varied quite a bit. The tests we added that focused on all branches of the code and the conditional operators helped improve our mutation coverage significantly. This is because a lot of the mutations involving the code involved mutation the conditional operators. We also added some test cases for some branches that we had previously overlooked, this also helped us improve our mutation coverage. The tests involving focusing on incremental and decremental operators were not very effective. This was because many different methods had different ways of handling incremental and decremental operators, making it challenging to address them uniformly across all methods. Additionally, some of the mutations involving these operators may not have been critical in terms of impacting the behavior of the methods under test.
+
+## Datautilities
 
 
 
