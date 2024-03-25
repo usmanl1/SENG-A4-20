@@ -118,6 +118,27 @@ The removal of the call to range.shift() in the line "return shift(base, delta, 
 
 # Analysis drawn on the effectiveness of each of the test classes
 
+## Range  
+Range class was able to improve from 56% mutation coverage to 66% mutation coverage. This mostly done by adding new tests code into our RangeTest.java file. Here are some of the tests we added.
+
+...
+		@Test
+		public void intersectBoundry_MutationTest() {	
+			Range range1 = new Range(0, 10);
+			Range range2 = new Range(-20,-10);
+
+			assertTrue(range1.intersects(5, 5));
+			assertFalse(range1.intersects(10, 10));
+			assertFalse(range1.intersects(100, 10));	
+			assertTrue(range2.intersects(-15, -15));
+			assertFalse(range2.intersects(-20,-20));
+			assertFalse(range2.intersects(-10, -10));
+
+		}
+...
+
+
+
 # A discussion on the effect of equivalent mutants on mutation score accuracy
 
 # A discussion of what could have been done to improve the mutation score of the test suites
