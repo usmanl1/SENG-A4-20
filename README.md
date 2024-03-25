@@ -229,6 +229,12 @@ Regarding our DataUtilities test suite, although our mutation coverage was alrea
 
 # Why do we need mutation testing? Advantages and disadvantages of mutation testing
 
+Mutation testing is a valuable technique for evaluating the effectiveness of test suites by introducing mutations, into the source code and assessing whether the tests can detect these mutations. One of the advantages of mutation testing is its ability to provide a measure of test suite quality, as it identifies areas where tests fail to detect changes in the code. This highlights missing coverage in our test suite and helps build better coverage for our source code.  By revealing weaknesses in test suites, mutation testing helps improve the overall quality and reliability of software systems. 
+
+However, there are quite a few disadvatages with mutation testing. It can be computationally expensive, as it involves generating numerous mutants and executing the entire test suite against each mutant. Interpreting mutation testing results can be complex, and identifying false positives or false negatives may require manual effort. Moreover, the effectiveness of mutation testing depends heavily on the selection and implementation of mutation operators, and limited mutation operators may not adequately represent real-world faults, leading to incomplete testing.
+
+In conclusion, while mutation testing offers valuable insights into test suite quality and helps enhance software reliability, it also presents challenges such as computational costs and complexity.
+
 # Explain your SELENUIM test case design process
 
 In the process of creating our Selenium test suite, we began by thoroughly exploring the website to get a good understanding of its diverse functionalities and features which can be used for testing. We documented these functions, actions like system login, add product to card, search local nearest store, product searches for both existing and non-existing items, among others. Subsequently, we systematically executed each function with varied test inputs if it was possible for the specific test. Once we had a deep familiarity of the website's operations, we methodically made the test scenarios into Selenium scripts one by one. Our efforts culminated in the creation of 14 distinct test cases aimed at scrutinizing the system major functionality. These cases ranged from comprehensive tests like valid and invalid username logins to standalone assessments such as validating gift card codes.
