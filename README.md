@@ -55,9 +55,45 @@ Removed call to Math.min -> Killed
 **Analysis**  
 We removed the line "double l = Math.min(range1.getLowerBound(), range2.getLowerBound());", which was essential for combining two range objects by selecting the lowest value from each. As a result, our tests lost their expected behavior regarding the lower bounds of the combined range object, leading to test failures.
 
+## combine(Range range1, Range range2)
 
-In the line "return (value >= this.lower && value <= this.upper);", we replaced the less-than operator ("<=") with the greater-than operator (">="). This alteration occurred within the contains(double value) method, which returns a boolean indicating whether the provided double value falls within the specified range. By changing the evaluation operators, we modified the logic determining whether a value is within the range, leading to a change in the expected boolean output of the method. Consequently, our tests failed as they were expecting different boolean values due to this operator substitution.
+**Mutation** 
+Removed call to Math.min -> Killed
 
+**Analysis**  
+We removed the line "double l = Math.min(range1.getLowerBound(), range2.getLowerBound());", which was essential for combining two range objects by selecting the lowest value from each. As a result, our tests lost their expected behavior regarding the lower bounds of the combined range object, leading to test failures.
+
+## contains(double value)
+
+**Mutation** 
+Less than to not equal -> SURVIVED
+
+**Analysis**  
+We modified the line "return (value >= this.lower && value <= this.upper);" by changing the "<=" operator to "!=". This transformation aimed to check if the provided value is not equal to the lower and upper bounds of the range. Despite the mutation, the test cases still passed, indicating that the method correctly handles cases where the value is not within the specified range.
+
+## intersects(double b0, double b1)
+
+**Mutation** 
+negated conditional -> SURVIVED
+
+**Analysis**  
+We mutated the line "if (b0 <= this.lower)" by negating the conditional to "if (!(b0 <= this.lower))". This alteration aims to invert the logic, checking if the value of b0 is not less than or equal to the lower bound of the range. The test survived because the negated conditional still ensures correct behavior in handling cases where b0 exceeds the lower bound of the range.
+
+## intersects(double b0, double b1)
+
+**Mutation** 
+negated conditional -> SURVIVED
+
+**Analysis**  
+We mutated the line "if (b0 <= this.lower)" by negating the conditional to "if (!(b0 <= this.lower))". This alteration aims to invert the logic, checking if the value of b0 is not less than or equal to the lower bound of the range. The test survived because the negated conditional still ensures correct behavior in handling cases where b0 exceeds the lower bound of the range.
+
+## expandToInclude(range range, double value)
+
+**Mutation** 
+Removed conditional-replaced comparison check with false -> KILLED
+
+**Analysis**  
+We mutated the line "if (value < range.getLowerBound())" by replacing the comparison check with false. This change effectively bypasses the conditional logic and alters the function's behavior. Specifically, regardless of the value's relationship with the lower bound of the range, the function will always return a new range with the upper bound set to the specified value. This mutation introduces a significant deviation from the intended functionality, potentially resulting in incorrect outputs when expanding the range to include the specified value. Consequently, it is expected to cause failures in tests that rely on this method for expanding ranges accurately.
 
 
 # Report all the statistics and the mutation score for each test class
