@@ -31,6 +31,35 @@ Replaced double addition with division -> Killed
 **Analysis**  
 In the line "return this.lower / 2.0 + this.upper / 2.0;" we replaced with double addition with another division. This killed our tests because the expected values changed due to the change of the operators used in the return statement.
 
+## contains(double value)
+
+**Mutation** 
+less than to greater than -> Killed
+
+**Analysis**  
+In the line "return (value >= this.lower && value <= this.upper);", we replaced the less-than operator ("<=") with the greater-than operator (">="). This alteration occurred within the contains(double value) method, which returns a boolean indicating whether the provided double value falls within the specified range. By changing the evaluation operators, we modified the logic determining whether a value is within the range, leading to a change in the expected boolean output of the method. Consequently, our tests failed as they were expecting different boolean values due to this operator substitution.
+
+## intersects(double b0, double b1)
+
+**Mutation** 
+negated conditional -> Killed
+
+**Analysis**  
+In the line "return (b1 > this.lower);", we negated the conditional statement. This change occurred within the intersects(double b0, double b1) method, which verifies if both b0 and b1 fall within the range specified by the object. By negating the conditional, we altered the logic determining whether the provided values intersect with the range. Consequently, the expected boolean values differed from the actual results, leading to test failures.
+
+## combine(Range range1, Range range2)
+
+**Mutation** 
+Removed call to Math.min -> Killed
+
+**Analysis**  
+We removed the line "double l = Math.min(range1.getLowerBound(), range2.getLowerBound());", which was essential for combining two range objects by selecting the lowest value from each. As a result, our tests lost their expected behavior regarding the lower bounds of the combined range object, leading to test failures.
+
+
+In the line "return (value >= this.lower && value <= this.upper);", we replaced the less-than operator ("<=") with the greater-than operator (">="). This alteration occurred within the contains(double value) method, which returns a boolean indicating whether the provided double value falls within the specified range. By changing the evaluation operators, we modified the logic determining whether a value is within the range, leading to a change in the expected boolean output of the method. Consequently, our tests failed as they were expecting different boolean values due to this operator substitution.
+
+
+
 # Report all the statistics and the mutation score for each test class
 
 # Analysis drawn on the effectiveness of each of the test classes
