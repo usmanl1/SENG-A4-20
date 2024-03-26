@@ -215,9 +215,84 @@ The following code above helped us expand our mutation coverage for intersection
 
 Overall, the effectiveness of each of the test we added varied quite a bit. The tests we added that focused on all branches of the code and the conditional operators helped improve our mutation coverage significantly. This is because a lot of the mutations involving the code involved mutation the conditional operators. We also added some test cases for some branches that we had previously overlooked, this also helped us improve our mutation coverage. The tests involving focusing on incremental and decremental operators were not very effective. This was because many different methods had different ways of handling incremental and decremental operators, making it challenging to address them uniformly across all methods. Additionally, some of the mutations involving these operators may not have been critical in terms of impacting the behavior of the methods under test.
 
-## Datautilities
+## DataUtilities
+The DataUtilities class has significantly improved from 78% to 90% mutation coverage, primarily due to the addition of new test cases in our DataUtilitiesTest.java file. Let's analyze how each new test contributes to mutation coverage: 
 
-
+The test below verifies that the method correctly calculates the column total when all provided rows are valid and contain non-null values. It ensures that the method sums up values correctly across all valid rows, enhancing coverage by testing the primary, happy path scenario.  
+   
+    @Test
+    public void testCalculateColumnTotalValidValuesAndRows() {
+        DefaultKeyedValues2D values = new DefaultKeyedValues2D();
+        values.addValue(5.0, 0, 0);
+        values.addValue(10.0, 1, 0);
+        values.addValue(15.0, 2, 0);
+        int[] validRows = {0, 1, 2};
+        double result = DataUtilities.calculateColumnTotal(values, 0, validRows);
+        assertEquals(30.0, result, 0.0001); 
+    }
+  
+The test below checks the method's handling of invalid row indices, which are outside the range of the dataset's row count. The expected result is 0.0 since these rows do not exist. This test improves mutation coverage by ensuring the method correctly handles and ignores invalid row indices.  
+    
+    @Test
+    public void testCalculateColumnTotalValidValuesInvalidRows() {
+        DefaultKeyedValues2D values = new DefaultKeyedValues2D();
+        values.addValue(5.0, 0, 0);
+        values.addValue(10.0, 1, 0);
+        values.addValue(15.0, 2, 0);
+        int[] invalidRows = {3, 4, 5};
+        double result = DataUtilities.calculateColumnTotal(values, 0, invalidRows);
+        assertEquals(0.0, result, 0.0001);  
+    }
+  
+The test below introduces null values in the dataset and checks if the method correctly skips these nulls while calculating the total. It enhances mutation coverage by verifying the method's resilience to null values within the dataset.  
+    
+    @Test
+    public void testCalculateColumnTotalWithNullValues() {
+        DefaultKeyedValues2D values = new DefaultKeyedValues2D();
+        values.addValue(5.0, 0, 0);
+        values.addValue(null, 1, 0);
+        values.addValue(15.0, 2, 0);
+        int[] validRows = {0, 1, 2};
+        double result = DataUtilities.calculateColumnTotal(values, 0, validRows);
+        assertEquals(20.0, result, 0.0001);
+    }
+  
+The test below ensures the method correctly sums up values across all valid columns. This test adds coverage by confirming the method's ability to handle a basic, valid scenario for row total calculation.  
+    
+    @Test
+    public void testCalculateRowTotalValidValuesAndCols() {
+        DefaultKeyedValues2D values = new DefaultKeyedValues2D();
+        values.addValue(5.0, 0, 0);
+        values.addValue(10.0, 0, 1);
+        values.addValue(15.0, 0, 2);
+        int[] validCols = {0, 1, 2};
+        double result = DataUtilities.calculateRowTotal(values, 0, validCols);
+        assertEquals(30.0, result, 0.0001);
+    }
+  
+The test below examines how the method behaves when given column indices that are outside the dataset's column range. Ensuring a return of 0.0 for invalid columns increases mutation coverage by validating the method's ability to ignore out-of-range columns.  
+    
+    @Test
+    public void testCalculateRowTotalValidValuesInvalidCols() {
+        DefaultKeyedValues2D values = new DefaultKeyedValues2D();
+        values.addValue(5.0, 0, 0);
+        values.addValue(10.0, 0, 1);
+        values.addValue(15.0, 0, 2);
+        int[] invalidCols = {3, 4, 5};
+        double result = DataUtilities.calculateRowTotal(values, 0, invalidCols);
+        assertEquals(0.0, result, 0.0001);
+    }
+  
+The test below directly tests the method's response to null data input, expecting an `IllegalArgumentException`. This scenario significantly improves mutation coverage by ensuring that the method properly validates its input parameters, adhering to its contract of not permitting null data inputs.  
+  
+    @Test(expected = IllegalArgumentException.class)
+    public void testCalculateRowTotalNullData() {
+        DefaultKeyedValues2D values = null;
+        int[] validCols = {0, 1, 2};
+        DataUtilities.calculateRowTotal(values, 0, validCols);
+    }
+  
+In summary, all these tests contribute to enhancing mutation coverage by testing different pathways through the code—valid paths, edge cases.
 
 # A discussion on the effect of equivalent mutants on mutation score accuracy
 
