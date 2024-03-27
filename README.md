@@ -248,6 +248,22 @@ The test below checks the method's handling of invalid row indices, which are ou
         int[] invalidRows = {3, 4, 5};
         double result = DataUtilities.calculateColumnTotal(values, 0, invalidRows);
         assertEquals(0.0, result, 0.0001);  
+    }  
+
+The test below directly contributes to increasing it for the calculateColumnTotal method that accepts a Values2D object, a column index, and an array of valid row indices. Mutation testing involves making small changes to a program's code (mutants) and checking if the test suite can detect these changes. A test suite has high mutation coverage if it can detect most mutants, indicating it can catch defects that might be introduced into the tested method.  
+
+    @Test
+    public void testCalculateColumnTotalWithNonNullValues() {
+        DefaultKeyedValues2D values = new DefaultKeyedValues2D();
+        values.addValue(5.0, 0, 0);
+        values.addValue(10.0, 1, 0);
+        values.addValue(15.0, 2, 0);
+
+        int[] validRows = {0, 1, 2};
+
+        double result = DataUtilities.calculateColumnTotal(values, 0, validRows);
+
+        assertEquals(30.0, result, 0.0001);
     }
   
 The test below introduces null values in the dataset and checks if the method correctly skips these nulls while calculating the total. It enhances mutation coverage by verifying the method's resilience to null values within the dataset.  
