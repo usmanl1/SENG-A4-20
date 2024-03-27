@@ -120,8 +120,14 @@ The removal of the call to range.shift() in the line "return shift(base, delta, 
 ![Alt text](/Images/DataUtilities_Before_Mutations_Tests.png)
 
 
+![Alt text](/Images/DataUtilities_Before_Breakdown_Statistics.png)
+
+
 ## DataUtilities after mutation tests added
 ![Alt text](/Images/DataUtilities_After_Mutations_Tests.png)
+
+
+![Alt text](/Images/DataUtilities_After_Breakdown_Statistics.png)
 
 # Analysis drawn on the effectiveness of each of the test classes
 
