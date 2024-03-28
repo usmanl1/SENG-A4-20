@@ -12,6 +12,7 @@
 | Ehsan          |     |
 
 # Introduction
+In this lab assignment, the primary focus was on mutation testing and utilizing the Selenium tool to gain a better understanding of these concepts introduced in the lectures. Our group opted to employ the PIT testing tool for mutation testing to assess mutation coverage within Eclipse. In the second part of the lab, we utilized the Selenium IDE extension on our individual browsers. Mutation testing was integrated to enhance error detection in the original source code, with test cases designed to identify vulnerabilities in the code that may have been overlooked during initial testing. The lab also emphasized GUI testing, providing an introduction to automating test cases, particularly focusing on user interface interactions where users can record and execute their scripts.
 
 # Analysis of 10 Mutants of the Range class 
 
